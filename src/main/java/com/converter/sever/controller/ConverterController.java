@@ -24,9 +24,4 @@ public class ConverterController {
 	public Map<String, Double> convert(@RequestParam("input") double input, @RequestParam("unitName")Unit unit){
 		return service.convert(input, unit);
 	}
-	
-	@RequestMapping("/hello")
-	public String sayHello() {
-		return "hello";
-	}
 }
