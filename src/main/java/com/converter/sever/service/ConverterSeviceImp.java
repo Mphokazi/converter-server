@@ -1,6 +1,9 @@
 package com.converter.sever.service;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 import com.converter.sever.dto.ConvertDTO;
@@ -10,7 +13,7 @@ import com.converter.sever.util.Unit;
 public class ConverterSeviceImp implements ConverterService{
 
 	@Override
-	public ConvertDTO convert(double input, Unit unit) {
+	public Map<String, Double> convert(double input, Unit unit) {
 		
 		switch (unit) {
 		case CELCIOUS:
@@ -22,29 +25,37 @@ public class ConverterSeviceImp implements ConverterService{
 		case METERS:
 			return converCentimetersToMeters(input);
 		default:
-			return new ConvertDTO(input);
+			return new HashMap<>();
 		}
 		
 	}
 	
-	private ConvertDTO convertCelciousToFarenheit(double input) {
+	private Map<String, Double> convertCelciousToFarenheit(double input) {
 		double convert = (9 * (input) / 5) + 32;
-		return new ConvertDTO(convert);
+		Map<String, Double> mapper = new HashMap<>();
+		mapper.put("content", convert);
+		return mapper;
 	}
 	
-	private ConvertDTO converFarenheittToCelcious(double input) {
+	private Map<String, Double> converFarenheittToCelcious(double input) {
 		double convert = 5 * (input - 32) / 9;
-		return new ConvertDTO(convert);
+		Map<String, Double> mapper = new HashMap<>();
+		mapper.put("content", convert);
+		return mapper;
 	}
 	
-	private ConvertDTO convertMetersToCentimeters(double input) {
+	private Map<String, Double> convertMetersToCentimeters(double input) {
 		double convert = input / 0.010000;
-		return new ConvertDTO(convert);
+		Map<String, Double> mapper = new HashMap<>();
+		mapper.put("content", convert);
+		return mapper;
 	}
 	
-	private ConvertDTO converCentimetersToMeters(double input) {
+	private Map<String, Double> converCentimetersToMeters(double input) {
 		double convert = (input * 0.010000);
-		return new ConvertDTO(convert);
+		Map<String, Double> mapper = new HashMap<>();
+		mapper.put("content", convert);
+		return mapper;
 	}
 	
 }
