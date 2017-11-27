@@ -5,7 +5,11 @@ public enum Unit {
 	FARENHEIT,
 	CELCIOUS,
 	CENTIMETERS,
-	METERS;
+	METERS,
+	KILOGRAMS,
+	GRAMS;
+	
+	
 	
 	private String value;
 	

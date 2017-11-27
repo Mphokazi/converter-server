@@ -23,7 +23,11 @@ public class ConverterSeviceImp implements ConverterService{
 		case CENTIMETERS:
 			return convertMetersToCentimeters(input);
 		case METERS:
-			return converCentimetersToMeters(input);
+			return convertCentimetersToMeters(input);
+		case KILOGRAMS:
+			return convertKilogramsToGrams(input);
+		case GRAMS:
+			return convertGramsToKilograms(input);
 		default:
 			return new HashMap<>();
 		}
@@ -51,8 +55,21 @@ public class ConverterSeviceImp implements ConverterService{
 		return mapper;
 	}
 	
-	private Map<String, Double> converCentimetersToMeters(double input) {
+	private Map<String, Double> convertCentimetersToMeters(double input) {
 		double convert = (input * 0.010000);
+		Map<String, Double> mapper = new HashMap<>();
+		mapper.put("content", convert);
+		return mapper;
+	}
+	private Map<String, Double> convertKilogramsToGrams(double input){
+		double convert = (input * 1000);
+		Map<String, Double> mapper = new HashMap<>();
+		mapper.put("content", convert);
+		return mapper;
+	}
+	
+	private Map<String, Double> convertGramsToKilograms(double input){
+		double convert = (input * 0.001);
 		Map<String, Double> mapper = new HashMap<>();
 		mapper.put("content", convert);
 		return mapper;

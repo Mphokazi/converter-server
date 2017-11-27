@@ -75,4 +75,18 @@ public class ConverterControllerTest {
 		.andExpect(status().isOk())
 		.andExpect(content().contentType("application/json;charset=UTF-8"));
 	}
+	@Test
+	public void testConvertKilogramsToGrams() throws Exception {
+		this.mockMvc.perform(get("/api/convert?input=8&unitName=KILOGRAMS")
+				.accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
+		.andExpect(status().isOk())
+		.andExpect(content().contentType("application/json;charset=UTF-8"));
+	}
+	@Test
+	public void testConvertGramsToKilograms() throws Exception {
+		this.mockMvc.perform(get("/api/convert?input=8&unitName=GRAMS")
+				.accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
+		.andExpect(status().isOk())
+		.andExpect(content().contentType("application/json;charset=UTF-8"));
+	}
 }
